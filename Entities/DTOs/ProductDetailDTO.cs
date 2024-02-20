@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concretes
+namespace Entities.DTOs
 {
-    //Çıplak class kalmasın!!!
-    public class Category :IEntity
-       
+    public class ProductDetailDTO :IDto
     {
-        public int CategoryId { get; set; }
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
         public string CategoryName { get; set; }
+        public short UnitInStock { get; set; }
     }
 }

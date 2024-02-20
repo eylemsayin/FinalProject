@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using Entities.Abstracts;
 using Entities.Concretes;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,21 @@ namespace Business.Concretes
             //iş kodları 
             //Yetkisi var mı?
             return _productDal.GetAll();
+        }
+
+        public List<Product> GetAllByCategoryId(int id)
+        {
+            return _productDal.GetAll(p=>p.CategoryId==id);
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p => p.UnitPrice <= min && p.UnitPrice <= max);
+        }
+
+        public List<ProductDetailDTO> GetProductDetails()
+        {
+            return _productDal.GetProductDetails();
         }
     }
 }
