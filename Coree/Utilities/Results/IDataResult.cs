@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Results;
 
-//Temel voidler için başlangıç
-public interface IResult
+public interface IDataResult<T>:IResult
 {
-    bool Success { get; } //get okumak için set yazmak için
-    string Message { get; }
+    T Data { get; }
 }
