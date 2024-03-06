@@ -21,6 +21,8 @@ namespace Business.Concretes
             _productDal = productDal;
             
         }
+        // [LogAspet]--AOP
+        
 
         public IResult Add(Product product)
         {
@@ -40,7 +42,7 @@ namespace Business.Concretes
         {
             //iş kodları 
             //Yetkisi var mı?
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour == 20)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
