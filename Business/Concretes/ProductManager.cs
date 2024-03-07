@@ -1,14 +1,20 @@
 ﻿using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using Entities.Abstracts;
 using Entities.Concretes;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Business.Concretes
 {
@@ -22,17 +28,19 @@ namespace Business.Concretes
             
         }
         // [LogAspet]--AOP
-        
 
+        //[Validate]
+        //AOP => Örneğin metotlarınızı loglamak istiyorsunuz,bir metot başında sonunda veya hata verdiğinde loglanır.Uygulamanın başında sonunda hata verdiğinde çalışmasını istediğin kodların varsa onları aop yöntemi ile design edersin.interception anlamı araya girmek.
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
             //business codes
-            if (product.ProductName.Length<2)
-            {
-                //magic strings
-                return new ErrorResult(Messages.ProductNameInvalid);
-                
-            }
+            //validation -->adın min max kaç karakter olmalı gibi...
+            //business rules--> bankada kredi verirken kişinin krediye uygun olup olmaması gibi...
+
+            //ValidationTool.Validate(new ProductValidator(), product);
+           
+
             _productDal.Add(product);
 
             return new SuccessResult(Messages.ProductAdded);
