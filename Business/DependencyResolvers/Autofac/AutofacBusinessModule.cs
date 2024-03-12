@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstracts;
+using Business.CCS;
 using Business.Concretes;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
@@ -21,6 +22,7 @@ public class AutofacBusinessModule : Module
 
         builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
         builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+       
 
 
         var assembly = System.Reflection.Assembly.GetExecutingAssembly();

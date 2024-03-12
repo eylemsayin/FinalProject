@@ -10,11 +10,12 @@ using System.Threading.Tasks;
 
 namespace Core.Aspects.Autofac.Validation;
 
-public class ValidationAspect : MethodInterception
+public class ValidationAspect : MethodInterception //Aspect
 {
     private Type _validatorType;
     public ValidationAspect(Type validatorType)
     {
+        //Defensive codes: Savunma odaklı kodlama
         if (!typeof(IValidator).IsAssignableFrom(validatorType))
         {
             throw new System.Exception("Bu bir doğrulama sınıfı değil");
@@ -22,6 +23,8 @@ public class ValidationAspect : MethodInterception
 
         _validatorType = validatorType;
     }
+
+    //Bu yöntem çağrıldığında, çağrılan yönteminin öncesinde belirli bir işlemi gerçekleştirmek için kullanılır.
     protected override void OnBefore(IInvocation invocation)
     {
         var validator = (IValidator)Activator.CreateInstance(_validatorType);
