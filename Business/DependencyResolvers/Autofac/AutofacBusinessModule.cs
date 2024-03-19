@@ -5,6 +5,7 @@ using Business.CCS;
 using Business.Concretes;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 using Entities.Abstracts;
 using System;
@@ -22,7 +23,9 @@ public class AutofacBusinessModule : Module
 
         builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
         builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
-       
+
+        builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+        builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
 
 
         var assembly = System.Reflection.Assembly.GetExecutingAssembly();
