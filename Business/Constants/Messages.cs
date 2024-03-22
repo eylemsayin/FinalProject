@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Core.Entities.Concrete;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,4 +17,11 @@ public static class Messages //static-->newleme yapmayalım diye basit bi mesaj 
     public static string ProductCountOfCategoryError="Bir kategoride en fazla 10 ürün olabilir.";
     public static string ProductNameAlreadyExists="Bu isimde zaten başka bir ürün var...";
     public static string CategoryLimitExceded="Kategori limiti aşıldığı için yeni ürün eklenemiyor";
+    public static string AuthorizationDenied = "Yetkiniz yok.";
+    public static string UserRegistered ="Kayıt oldu";
+    public static string PasswordError = "Paralo hatası";
+    public static string UserNotFound = "Kullanıcı bulunamadı.";
+    public static string SuccessfulLogin = " Başarılı giriş";
+    public static string UserAlreadyExists ="Kullanıcı Mevcut ";
+    public static string AccessTokenCreated = "Token oluşturuldu.";
 }

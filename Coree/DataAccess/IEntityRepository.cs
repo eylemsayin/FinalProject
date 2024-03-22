@@ -12,7 +12,7 @@ namespace Core.DataAccess
     //class referans tip olabilir.
     //IEntity: IEntity olabilir veya IEntity implemente eden bir nesne olabilir.
     //new(): new'lenebilir olmalı demek
-    public interface IEntitiyRepository<T> where T:class, IEntity, new()
+    public interface IEntityRepository<T> where T:class, IEntity, new()
     {
 
         List<T> GetAll(Expression<Func<T,bool>> filter=null);

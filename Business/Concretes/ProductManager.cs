@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Business.BusinessAspects.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
@@ -39,14 +40,18 @@ namespace Business.Concretes
         //[Validate]
 
         //AOP => Örneğin metotlarınızı loglamak istiyorsunuz,bir metot başında sonunda veya hata verdiğinde loglanır.Uygulamanın başında sonunda hata verdiğinde çalışmasını istediğin kodların varsa onları aop yöntemi ile design edersin.interception anlamı araya girmek.
-
+        //Claim
+        //Client => web uygulaması, tarayıcılar...
+        //JWT 
+        //Encryption, Hashing  
+        //Salting=> kullanıcının girdiği parolayı daha da güçlendirme
+        [SecuredOperation("product.add")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
 
             //validation -->adın min max kaç karakter olmalı gibi...
             //business rules--> bankada kredi verirken kişinin krediye uygun olup olmaması gibi...
-
             //ValidationTool.Validate(new ProductValidator(), product);
 
            

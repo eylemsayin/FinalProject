@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Abstracts
 {
-    public interface IProductDal :IEntitiyRepository<Product> //Dal => Data Acces Layer yani IProductDal => Dal katmanında demek.
+    public interface IProductDal :IEntityRepository<Product> //Dal => Data Acces Layer yani IProductDal => Dal katmanında demek.
     {
         List<ProductDetailDTO> GetProductDetails();
        
